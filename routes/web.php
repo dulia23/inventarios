@@ -3,8 +3,18 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+/*
 Route::get('/', function () {
     return view('welcome');
+});
+*/
+
+Route::get('/', function () {
+    if (Auth::check()) {
+        return redirect()->route('dashboard');
+    } else {
+        return redirect()->route('login'); // Suponiendo que tu ruta de login se llama 'login'
+    }
 });
 
 Route::get('/dashboard', function () {
